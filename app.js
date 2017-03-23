@@ -35,18 +35,10 @@ var registerListeners = function(){
     });
     $("#download").on("click",function(){
         var url = $("#search-input").val();
-        var html = '<img id="test-img" src="'+url+'" alt=""/>';
-        $("#img-list").html(html);
-        var h = $("#test-img").height();
-        var w = $("#test-img").width();
-        var img = document.getElementById("test-img");
-        var canvas = document.createElement('canvas');
-        canvas.width = w;
-        canvas.height = h;
-        canvas.getContext('2d').drawImage(img, 0, 0);
-        canvas.toBlob(function(blob) {
-            console.log("Blob function worked!");
-        });
+        var link = '<a id="img-link" href="'+url+'" download>';
+        $("body").append(link);
+        $("#img-link")[0].click();
+        $("#img-link").remove();
     });
 };
 
